@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual y Guía de PostgreSQL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app-container">
+    
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="brand">
+                <div class="brand-icon">🐘</div>
+                <div class="brand-text">
+                    <h1>PostgreSQL</h1>
+                    <span>Manual & Guía</span>
+                </div>
+            </div>
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="search-input" placeholder="Buscar... ( / )">
+            </div>
+        </div>
+        
+        <div class="sidebar-nav">
+            <div class="nav-group">
+                <div class="nav-group-title">General</div>
+                <a href="#inicio" data-target="inicio" class="nav-item active">Introducción</a>
+                <a href="#instalacion" data-target="instalacion" class="nav-item">Instalación</a>
+                <a href="#conceptos" data-target="conceptos" class="nav-item">Conceptos Básicos</a>
+            </div>
+            
+            <div class="nav-group">
+                <div class="nav-group-title">Desarrollo SQL</div>
+                <a href="#consultas" data-target="consultas" class="nav-item">Consultas SQL</a>
+                <a href="#funciones" data-target="funciones" class="nav-item">Funciones</a>
+                <a href="#procedimientos" data-target="procedimientos" class="nav-item">Procedimientos Almacenados</a>
+            </div>
+            
+            <div class="nav-group">
+                <div class="nav-group-title">Avanzado</div>
+                <a href="#diseno" data-target="diseno" class="nav-item">Diseño de Base de Datos</a>
+                <a href="#seguridad" data-target="seguridad" class="nav-item">Seguridad</a>
+                <a href="#rendimiento" data-target="rendimiento" class="nav-item">Rendimiento y EXPLAIN</a>
+            </div>
+            
+            <div class="nav-group">
+                <div class="nav-group-title">Práctica</div>
+                <a href="#consola" data-target="consola" class="nav-item">Consola Interactiva</a>
+                <a href="#quiz" data-target="quiz" class="nav-item">Quiz de Conocimiento</a>
+            </div>
+        </div>
+        
+        <div class="sidebar-footer">
+            <div class="progress-card">
+                <div class="progress-header">
+                    <span>Progreso de Lectura</span>
+                    <span id="progress-val">0%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <header class="top-header">
+            <button class="btn btn-secondary" id="mobile-toggle-btn" aria-label="Menu">☰</button>
+            <div class="header-breadcrumbs" id="current-crumb">General / Introducción</div>
+            <div class="header-actions">
+                <button class="theme-toggle-btn" id="theme-toggle-btn">
+                    <span id="theme-icon">🌙</span> <span id="theme-text">Modo Claro</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="content-body">
+            
+            <!-- Introducción -->
+            <section id="inicio" class="doc-section active">
+                <div class="section-header">
+                    <div class="section-tag">Fundamentos</div>
+                    <h2 class="section-title">Introducción a PostgreSQL</h2>
+                    <p class="section-description">Bienvenido al manual interactivo del SGBD Open Source más avanzado.</p>
+                </div>
+                <div class="content-block">
+                    <p>Bienvenido al manual y guía interactiva de <strong>PostgreSQL</strong>. Este documento te guiará desde los conceptos fundamentales hasta técnicas avanzadas de rendimiento y seguridad.</p>
+                </div>
+                <div class="completion-box">
+                    <button class="completion-btn" data-section="inicio">✅ Marcar como leído</button>
+                </div>
+            </section>
+
+            <!-- Instalación -->
+            <section id="instalacion" class="doc-section">
+                <div class="section-header">
+                    <div class="section-tag">Setup</div>
+                    <h2 class="section-title">Instalación</h2>
+                    <p class="section-description">Guía para tener PostgreSQL corriendo en minutos.</p>
+                </div>
+                <div class="content-block">
+                    <div class="code-wrapper">
+                        <div class="code-header">
+                            <span class="code-lang">bash</span>
+                            <button class="copy-btn" aria-label="Copiar código">Copiar</button>
+                        </div>
+                        <pre><code># Ubuntu/Debian
+sudo apt update
+sudo apt install postgresql postgresql-contrib
+
+# macOS (Homebrew)
+brew install postgresql</code></pre>
+                    </div>
+                </div>
+                <div class="completion-box">
+                    <button class="completion-btn" data-section="instalacion">✅ Marcar como leído</button>
+                </div>
+            </section>
+
+            <!-- Conceptos Básicos -->
+            <section id="conceptos" class="doc-section">
+                <div class="section-header">
+                    <div class="section-tag">Teoría</div>
+                    <h2 class="section-title">Conceptos Básicos</h2>
+                    <p class="section-description">Modelo relacional vs Objeto-relacional.</p>
+                </div>
+                <div class="content-block">
+                    <p>A diferencia de los SGBD relacionales convencionales, PostgreSQL es un sistema gestor de bases de datos <strong>objeto-relacional (ORDBMS)</strong>. Permite herencia de tablas y tipos de datos personalizados.</p>
+                </div>
+                <div class="completion-box">
+                    <button class="completion-btn" data-section="conceptos">✅ Marcar como leído</button>
+                </div>
+            </section>
+
+            <!-- Consultas SQL -->
+            <section id="consultas" class="doc-section">
+                <div class="section-header">
+                    <div class="section-tag">Desarrollo</div>
+                    <h2 class="section-title">Consultas SQL</h2>
+                    <p class="section-description">Potencia de CTEs y funciones de ventana.</p>
+                </div>
+                <div class="content-block">
+                    <p>PostgreSQL soporta el estándar SQL de manera estricta y añade numerosas extensiones potentes.</p>
+                    <div class="code-wrapper">
+                        <div class="code-header">
+                            <span class="code-lang">sql</span>
+                            <button class="copy-btn" aria-label="Copiar código">Copiar</button>
+                        </div>
+                        <pre><code>WITH VentasRegionales AS (
+    SELECT region, SUM(monto) as total_ventas
+    FROM ordenes
+    GROUP BY region
+)
+SELECT region, total_ventas
+FROM VentasRegionales
+WHERE total_ventas > (SELECT SUM(total_ventas)/10 FROM VentasRegionales);</code></pre>
+                    </div>
+                </div>
+                <div class="completion-box">
+                    <button class="completion-btn" data-section="consultas">✅ Marcar como leído</button>
+                </div>
+            </section>
+            
+            <!-- Funciones -->
+            <section id="funciones" class="doc-section">
+                <div class="section-header">
+                    <div class="section-tag">Desarrollo</div>
+                    <h2 class="section-title">Funciones</h2>
+                    <p class="section-description">Lógica de negocio en la BD.</p>
+                </div>
+                <div class="content-block">
+                    <p>PostgreSQL permite escribir funciones en múltiples lenguajes: SQL, PL/pgSQL, C, Python, etc.</p>
+                </div>
+                <div class="completion-box">
+                    <button class="completion-btn" data-section="funciones">✅ Marcar como leído</button>
+                </div>
+            </section>
+
+            <!-- Procedimientos Almacenados -->
+            <section id="procedimientos" class="doc-section">
+                <div class="section-header">
+                    <div class="section-tag">Desarrollo</div>
+                    <h2 class="section-title">Procedimientos Almacenados</h2>
+                    <p class="section-description">Control avanzado de transacciones.</p>
+                </div>
+                <div class="content-block">
+                    <p>A partir de la versión 11, PostgreSQL introdujo procedimientos que permiten el control de transacciones (COMMIT/ROLLBACK) directamente desde el código del procedimiento.</p>
+                </div>
+                <div class="completion-box">
+                    <button class="completion-btn" data-section="procedimientos">✅ Marcar como leído</button>
+                </div>
+            </section>
+
+            <!-- Diseño -->
+            <section id="diseno" class="doc-section">
+                <div class="section-header">
+                    <div class="section-tag">Arquitectura</div>
+                    <h2 class="section-title">Diseño de Base de Datos</h2>
+                    <p class="section-description">Mejores prácticas y tipos JSONB.</p>
+                </div>
+                <div class="content-block">
+                    <p>Utiliza restricciones (constraints), normalización adecuada y el uso de tipos de datos JSONB para esquemas híbridos y flexibles.</p>
+                </div>
+                <div class="completion-box">
+                    <button class="completion-btn" data-section="diseno">✅ Marcar como leído</button>
+                </div>
+            </section>
+            
+            <!-- Seguridad -->
+            <section id="seguridad" class="doc-section">
+                <div class="section-header">
+                    <div class="section-tag">Arquitectura</div>
+                    <h2 class="section-title">Seguridad</h2>
+                    <p class="section-description">Protege tus datos y conexiones.</p>
+                </div>
+                <div class="content-block">
+                    <p>Nunca conectes aplicaciones con el usuario `postgres`. Crea roles con mínimos privilegios (Principio de Menor Privilegio) y configura `pg_hba.conf` para restringir conexiones.</p>
+                </div>
+                <div class="completion-box">
+                    <button class="completion-btn" data-section="seguridad">✅ Marcar como leído</button>
+                </div>
+            </section>
+
+            <!-- Rendimiento -->
+            <section id="rendimiento" class="doc-section">
+                <div class="section-header">
+                    <div class="section-tag">Avanzado</div>
+                    <h2 class="section-title">Rendimiento y EXPLAIN</h2>
+                    <p class="section-description">Optimización a nivel de planificador.</p>
+                </div>
+                <div class="content-block">
+                    <p>Analiza el costo de las consultas utilizando <code>EXPLAIN ANALYZE</code>. Comprender el plan de ejecución es fundamental para optimizar índices.</p>
+                    <div class="explain-plan">
+                        <div class="explain-node">
+                            <span style="font-family: var(--font-mono);">-> Hash Join (cost=2.03..2.06 rows=1)</span>
+                        </div>
+                        <div class="explain-children" style="padding-left: 1.5rem;">
+                            <div class="explain-node">
+                                <span style="font-family: var(--font-mono);">-> Seq Scan on t1</span>
+                            </div>
+                            <div class="explain-node">
+                                <span style="font-family: var(--font-mono);">-> Hash</span>
+                            </div>
+                            <div class="explain-children" style="padding-left: 1.5rem;">
+                                <div class="explain-node">
+                                    <span style="font-family: var(--font-mono);">-> Seq Scan on t2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="completion-box">
+                    <button class="completion-btn" data-section="rendimiento">✅ Marcar como leído</button>
+                </div>
+            </section>
+
+            <!-- Consola interactiva -->
+            <section id="consola" class="doc-section">
+                <div class="section-header">
+                    <div class="section-tag">Práctica</div>
+                    <h2 class="section-title">Consola SQL Simulada</h2>
+                    <p class="section-description">Ejecuta queries de ejemplo (Mock).</p>
+                </div>
+                <div class="content-block">
+                    <div class="sql-console">
+                        <div class="sql-console-header">
+                            <span style="color:var(--text-muted); font-size: 0.8rem; font-family: var(--font-mono)">postgres@localhost</span>
+                            <div class="sql-console-actions">
+                                <button class="sql-quick-btn" data-query="SELECT version();">version()</button>
+                                <button class="sql-quick-btn" data-query="SELECT * FROM users;">SELECT</button>
+                            </div>
+                        </div>
+                        <div class="sql-console-body">
+                            <div id="sql-output"></div>
+                            <div class="sql-console-input-row">
+                                <span style="color:var(--accent-cyan); margin-right:8px;">postgres=#</span>
+                                <input type="text" id="sql-input" autocomplete="off" spellcheck="false" placeholder="Escribe tu query SQL y presiona Enter">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="completion-box">
+                    <button class="completion-btn" data-section="consola">✅ Marcar como leído</button>
+                </div>
+            </section>
+
+            <!-- Quiz -->
+            <section id="quiz" class="doc-section">
+                <div class="section-header">
+                    <div class="section-tag">Práctica</div>
+                    <h2 class="section-title">Quiz de Conocimiento</h2>
+                    <p class="section-description">Pon a prueba lo que has aprendido.</p>
+                </div>
+                <div class="content-block">
+                    <!-- Contenedor vacío donde app.js inyecta el quiz -->
+                    <div id="quiz-container">
+                        <!-- Las preguntas irán aquí -->
+                    </div>
+                    <div id="quiz-result" class="quiz-result-card" style="display:none;">
+                        <h3 class="quiz-title">Resultado</h3>
+                        <div class="quiz-score" id="quiz-final-score"></div>
+                        <p class="quiz-result-msg" id="quiz-final-msg"></p>
+                        <button class="btn btn-primary quiz-reset-btn" id="quiz-reset-btn">Reiniciar Quiz</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <span id="toast-msg">Mensaje copiado</span>
+    </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
